@@ -53,7 +53,7 @@ module Dynamoid
       end
 
       def from_database(attrs = {})
-        clazz = attrs[:type] ? obj = attrs[:type].constantize : self
+        clazz = attrs[:type] ? obj = attrs[:type].classify.constantize : self
         clazz.new(attrs).tap { |r| r.new_record = false }
       end
 
